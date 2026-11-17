@@ -1,39 +1,29 @@
-# Criando-ia-com-audio-de-fala-mp4
-from openai import OpenAI
-from gtts import gTTS
-import os
+# Respostas de IA com Áudio
 
-cliente = OpenAI(
-    api_key="",
-    base_url="https://integrate.api.nvidia.com/v1"
-)
+**Autor:** Kaiky Yoshio Ono Marins  
+**Categoria:** Python · IA generativa · Síntese de voz  
+**Status:** Protótipo de estudo
 
-pergunta = input("O que deseja? Qual sua dúvida? ")
+## Visão geral
 
-resposta = cliente.chat.completions.create(
-    model="meta/llama-3.1-8b-instruct",
-    messages=[
-        {
-            "role": "user",
-            "content": pergunta
-        }
-    ]
-)
+Exemplo de aplicação de terminal que recebe uma pergunta, consulta um modelo de linguagem e transforma a resposta em fala usando Google Text-to-Speech (gTTS). O código arquivado salva o resultado como arquivo MP3.
 
-texto = resposta.choices[0].message.content
+## Recursos demonstrados
 
-print("\nResposta:\n")
-print(texto)
+- Entrada de perguntas pelo terminal.
+- Consulta a um modelo Llama por API.
+- Conversão de texto em áudio em português.
+- Salvamento do áudio como `resposta.mp3`.
 
-audio = gTTS(text=texto, lang="pt")
-audio.save("resposta.mp3")
-print("\nÁudio salvo em resposta.mp3")
+## Tecnologias
 
-os.startfile("resposta.mp3")
+- Python
+- SDK `openai`
+- gTTS
+- NVIDIA NIM
 
-tts = gTTS(
-    text=texto,
-    lang="pt-br"
-)
+## Material e execução
 
-tts.save("resposta.mp3")
+O código original está em [MATERIAL-ORIGINAL.txt](./MATERIAL-ORIGINAL.txt). Para testar, instale `openai` e `gTTS`, configure a chave de API no ambiente local e execute o exemplo em um ambiente com suporte à reprodução de áudio. O nome histórico do repositório menciona MP4, mas o exemplo documentado gera MP3.
+
+© 2026 Kaiky Yoshio Ono Marins.
